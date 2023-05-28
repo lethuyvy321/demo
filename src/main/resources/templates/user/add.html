@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Role</title>
+    <th:block th:replace="layout :: link-css"></th:block>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<th:block th:replace="layout :: header"></th:block>
+<div class="container">
+    <h1>Add Role</h1>
+    <form th:action="@{/users/add}" th:object="${user}" method="post">
+        <div class="col-6 mb-3">
+            <label class="form-label" for="username">Username: </label>
+            <input class="form-control" type="text" th:field="*{username}" id="username">
+            <!--<span class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>-->
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="email">Email: </label>
+            <input class="form-control" type="text" th:field="*{email}" id="email">
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="password">Price: </label>
+            <input class="form-control" type="text" th:field="*{password}" id="password">
+            <!--<span class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>-->
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="role">Role: </label>
+            <select class="form-control" id="role" name="role.id">
+                <option value="" >---Select Role---</option>
+                <option th:each="role : ${roles}" th:value="${role.id}"
+                        th:text="${role.name}"></option>
+            </select>
+            <!--<span class="text-danger" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span>-->
+        </div>
+        <input type="submit" class="btn btn-primary" value="Save">
+    </form>
+    <br>
+    <a th:href="@{/users}">Back to List</a>
+</div>
+<th:block th:replace="layout :: footer"></th:block>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Role</title>
+  <th:block th:replace="layout :: link-css"></th:block>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<th:block th:replace="layout :: header"></th:block>
+<div class="container">
+  <h1>Add Role</h1>
+  <form th:action="@{/roles/add}" th:object="${role}" method="post">
+    <div class="col-6 mb-3">
+      <label class="form-label" for="name">Name: </label>
+      <input class="form-control" type="text" th:field="*{name}" id="name">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Save">
+  </form>
+  <br>
+  <a th:href="@{/roles}">Back to List</a>
+</div>
+<th:block th:replace="layout :: footer"></th:block>
+</body>
+</html>
